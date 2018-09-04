@@ -1,7 +1,7 @@
 ﻿using System;
 using tabuleiro;
 using System.Collections.Generic;
-
+using System.Text.RegularExpressions;
 
 namespace xadrez_console
 {
@@ -100,7 +100,19 @@ namespace xadrez_console
         public static PosicaoXadrez lerPosicaoXadrez()
         {
             string s = Console.ReadLine();
+
+            if (s.Length <= 1)
+                throw new TabuleiroException("Posição inválida!");
+
             char coluna = s[0];
+            Regex regex = new Regex(@"^\d$");
+
+            if (regex.IsMatch(s[0].ToString()))
+                throw new TabuleiroException("Posição inválida!");
+
+            if (!regex.IsMatch(s[1].ToString()))
+                throw new TabuleiroException("Posição inválida!");
+
             int linha = int.Parse(s[1] + "");
             return new PosicaoXadrez(coluna, linha);
         }

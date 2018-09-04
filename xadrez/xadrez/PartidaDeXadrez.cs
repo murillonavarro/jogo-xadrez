@@ -147,7 +147,8 @@ namespace xadrez_console
             //#jogadaespecial promocao
             if (p is Peao)
             {
-                if ((p.cor == Cor.Branca && destino.linha == 0) || (p.cor == Cor.Branca && destino.linha == 7)){
+                if ((p.cor == Cor.Branca && destino.linha == 0) || (p.cor == Cor.Branca && destino.linha == 7))
+                {
                     p = tab.retirarPeca(destino);
                     pecas.Remove(p);
                     Peca dama = new Dama(tab, p.cor);
@@ -173,7 +174,7 @@ namespace xadrez_console
             {
                 turno++;
                 mudaJogador();
-            } 
+            }
 
             //#jogadaespecial en passant
             if (p is Peao && (destino.linha == origem.linha - 2 || destino.linha == origem.linha + 2))
@@ -186,9 +187,10 @@ namespace xadrez_console
             }
 
         }          
-
+            
         public void validarPosicaoDeOrigem(Posicao pos)
         {
+
             if (tab.peca(pos) == null)
             {
                 throw new TabuleiroException("Não existe peça na posição de origem escolhida!");

@@ -21,6 +21,9 @@
 
         public Peca peca(Posicao pos)
         {
+            if (pos.linha < 0 || pos.coluna < 0)
+                throw new TabuleiroException("Posição inválida!");
+            
             return pecas[pos.linha, pos.coluna];
         }
 
@@ -59,7 +62,7 @@
                 return false;
             }
             return true;
-        }
+        }       
 
         public void validarPosicao(Posicao pos)
         {
